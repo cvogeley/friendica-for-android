@@ -88,7 +88,7 @@ public class FriendicaImgUploadActivity extends Activity implements LoginListene
 
         EditText tSubject = (EditText) findViewById(R.id.subject);
         EditText t = (EditText) findViewById(R.id.maintb);
-		t.setText("File Uploader\n\nERR: Intent did not contain file!\n\nPress menu button for debug info !!!\n\n");
+		//t.setText("File Uploader\n\nERR: Intent did not contain file!\n\nPress menu button for debug info !!!\n\n");
 
 		View btn_upload = (View) findViewById(R.id.btn_upload);
 		btn_upload.setEnabled(false);
@@ -112,8 +112,8 @@ public class FriendicaImgUploadActivity extends Activity implements LoginListene
 				
 				//txtFilename.setText(Max.getBaseName(fileSpec));
 				
-				t.setText("Andfrnd Uploader Beta\n\n[b]URI:[/b] " + fileToUpload.toString() + "\n[b]File name:[/b] " + fileSpec);
-				
+				//t.setText("Andfrnd Uploader Beta\n\n[b]URI:[/b] " + fileToUpload.toString() + "\n[b]File name:[/b] " + fileSpec);
+				//t.setText(" ");
 				deleteAfterUpload = false;
 				
 				// restore data after failed upload:

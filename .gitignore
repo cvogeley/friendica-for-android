@@ -1,7 +1,11 @@
 .metadata
+.DS_Store
 mw-android-friendica-01/bin/
 libpulltorefresh/bin/
-.DS_Store
 .idea/workspace.xml
 gen/
 
+
+mw-android-friendica-01/.DS_Store
+
+mw-android-friendica-01/.DS_Store
