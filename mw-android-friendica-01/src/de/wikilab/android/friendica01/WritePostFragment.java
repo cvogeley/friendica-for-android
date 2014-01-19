@@ -153,7 +153,7 @@ public class WritePostFragment extends ContentFragment {
 		
 		final TwAjax t = new TwAjax(getActivity(), true, true);
 		t.addPostData("status", txt_status.getText().toString());
-		t.addPostData("source", "<a href='http://andfrnd.wikilab.de'>Friendica for Android</a>");
+		t.addPostData("source", "<a href='http://andfrnd.wikilab.de'>Redmatrix for Android</a>");
 		if (geo_en.isChecked()) {
 			LocationManager lm = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE); 
 			Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
