@@ -74,7 +74,7 @@ public class MessageWriteFragment extends Fragment {
 		t.addPostData("title", txtSubject.getText().toString());
 		t.addPostData("text", txtMessage.getText().toString());
 		if (replyToId != null) t.addPostData("replyto", replyToId);
-		t.addPostData("source", "<a href='http://andfrnd.wikilab.de'>Friendica for Android</a>");
+		t.addPostData("source", "<a href='http://andfrnd.wikilab.de'>Red Matrix for Android</a>");
 		
 		t.postData(Max.getServer(getActivity()) + "/api/direct_messages/new", new Runnable() {
 			@Override
