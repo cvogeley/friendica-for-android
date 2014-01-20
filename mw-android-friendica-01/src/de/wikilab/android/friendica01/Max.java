@@ -237,7 +237,7 @@ public class Max {
 		Log.v(TAG, "... showLoginForm");
 		View myView = ctx.getLayoutInflater().inflate(R.layout.loginscreen, null, false);
 		final AlertDialog alert = new AlertDialog.Builder(ctx)
-		.setTitle("Login to Friendica")
+		.setTitle("Login to Red Matrix")
 		.setView(myView)
 		.setOnCancelListener(new OnCancelListener() {
 			@Override
