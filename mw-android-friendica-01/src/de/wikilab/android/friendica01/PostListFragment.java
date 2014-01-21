@@ -153,7 +153,7 @@ public class PostListFragment extends ContentFragment {
 			loadWall(target.substring(9));
 		} else if (target != null && target.equals("notifications")) {
 			SendMessage("Set Header Text", getString(R.string.mm_notifications), null);
-			loadNotifications();
+			//loadNotifications();
 		} else {
 			SendMessage("Set Header Text", getString(R.string.mm_timeline), null);
 			loadTimeline();
@@ -270,6 +270,7 @@ public class PostListFragment extends ContentFragment {
 
 	void loadNotifications() {
 		final TwAjax t = new TwAjax(getActivity(), true, true);
+
 		t.getUrlXmlDocument(Max.getServer(getActivity()) + "/ping", new Runnable() {
 			@Override public void run() {
 				try {
@@ -293,8 +294,7 @@ public class PostListFragment extends ContentFragment {
 				}
 				hideProgBar();
 			}
-		});
-		
+		});		
 	}
 	
 	
