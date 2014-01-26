@@ -4,6 +4,8 @@ package de.wikilab.android.friendica01;
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 
 import android.content.Intent;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainMenuFragment extends Fragment implements LoginListener {
 	private static final String TAG="Friendica/MainMenuFragment";
@@ -37,34 +40,54 @@ public class MainMenuFragment extends Fragment implements LoginListener {
 	public void UpdateList() {
 		
 		final TwAjax t = new TwAjax(getActivity(), true, true);
-		t.getUrlXmlDocument(Max.getServer(getActivity()) + "/ping", new Runnable() {
+		t.getUrlContent(Max.getServer(getActivity()) + "/ping", new Runnable() {
 		//t.getUrlContent("http://" + server + "/ping", new Runnable() {
 			@Override
 			public void run() {
 				ArrayList<String> listWithNotifications = (ArrayList<String>) MainList.clone();
-
-				Document xd = t.getXmlDocumentResult();
-				
 				try {
-					appendNumber(listWithNotifications, 0, xd.getElementsByTagName("net").item(0).getTextContent());
-				//} catch (Exception ingoreException) {}
+				//Document xd = t.getXmlDocumentResult();
+				JSONArray j =  (JSONArray) t.getJsonResult();
 				
-				//try {
-					appendNumber(listWithNotifications, 4, xd.getElementsByTagName("intro").item(0).getTextContent() + " intros");
-				//} catch (Exception ingoreException) {}
-				
-				//try {
-					appendNumber(listWithNotifications, 2, xd.getElementsByTagName("home").item(0).getTextContent());
-				//} catch (Exception ingoreException) {}
-				
-				//try {
-					appendNumber(listWithNotifications, 1, xd.getElementsByTagName("notif").item(0).getAttributes().getNamedItem("count").getNodeValue());
-				//} catch (Exception ingoreException) {}
-				
-				//try {
-					lvw.setAdapter(new HtmlStringArrayAdapter(getActivity(), R.layout.mainmenuitem, android.R.id.text1, listWithNotifications));
-					if (selectedItemIndex>-1)((HtmlStringArrayAdapter)lvw.getAdapter()).setSelectedItemIndex(selectedItemIndex);
-				} catch (Exception ignoreException) {}
+					for(int i = 0; i < j.length(); i++) {
+						JSONObject jj = j.getJSONObject(i);
+						String network = jj.getString("network");
+						appendNumber(listWithNotifications, 0,network);
+						String intros = jj.getString("intros");
+						appendNumber(listWithNotifications, 4,intros+ " intros");
+						String home = jj.getString("home");
+						appendNumber(listWithNotifications, 2,home);
+						String notify = jj.getString("notify");
+						appendNumber(listWithNotifications, 1,notify);
+						lvw.setAdapter(new HtmlStringArrayAdapter(getActivity(), R.layout.mainmenuitem, android.R.id.text1, listWithNotifications));
+						if (selectedItemIndex>-1)((HtmlStringArrayAdapter)lvw.getAdapter()).setSelectedItemIndex(selectedItemIndex);
+	
+					}
+			    } catch (Exception ignoreException) {}
+//				
+//				try {
+//					//appendNumber(listWithNotifications, 0, xd.getElementsByTagName("net").item(0).getTextContent());
+//					
+//					appendNumber(listWithNotifications, 0,network);
+//					
+//					//} catch (Exception ingoreException) {}
+//				
+//				//try {
+//					appendNumber(listWithNotifications, 4, xd.getElementsByTagName("intro").item(0).getTextContent() + " intros");
+//				//} catch (Exception ingoreException) {}
+//				
+//				//try {
+//					appendNumber(listWithNotifications, 2, xd.getElementsByTagName("home").item(0).getTextContent());
+//				//} catch (Exception ingoreException) {}
+//				
+//				//try {
+//					appendNumber(listWithNotifications, 1, xd.getElementsByTagName("notif").item(0).getAttributes().getNamedItem("count").getNodeValue());
+//				//} catch (Exception ingoreException) {}
+//				
+//				//try {
+//					lvw.setAdapter(new HtmlStringArrayAdapter(getActivity(), R.layout.mainmenuitem, android.R.id.text1, listWithNotifications));
+//					if (selectedItemIndex>-1)((HtmlStringArrayAdapter)lvw.getAdapter()).setSelectedItemIndex(selectedItemIndex);
+//				} catch (Exception ignoreException) {}
 			}
 		});
 		//lvw.setAdapter(new HtmlStringArrayAdapter(this, android.R.layout.simple_list_item_1, android.R.id.text1, MainList));
@@ -102,11 +125,11 @@ public class MainMenuFragment extends Fragment implements LoginListener {
 		if (selectedItemIndex>-1)((HtmlStringArrayAdapter)lvw.getAdapter()).setSelectedItemIndex(selectedItemIndex);
 		
 		MainList.add(getString(R.string.mm_timeline));
-		MainList.add(getString(R.string.mm_notifications));
+		//MainList.add(getString(R.string.mm_notifications));
 		MainList.add(getString(R.string.mm_mywall));
-		MainList.add(getString(R.string.mm_myphotoalbums));
+		//MainList.add(getString(R.string.mm_myphotoalbums));
 		MainList.add(getString(R.string.mm_friends));
-		MainList.add(getString(R.string.mm_directmessages));
+		//MainList.add(getString(R.string.mm_directmessages));
 		MainList.add(getString(R.string.mm_updatemystatus));
 		MainList.add(getString(R.string.mm_takephoto));
 		MainList.add(getString(R.string.mm_selectphoto));
