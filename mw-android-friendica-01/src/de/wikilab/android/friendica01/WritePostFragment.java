@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.WindowManager.LayoutParams;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -29,7 +31,7 @@ public class WritePostFragment extends ContentFragment {
 
 	Button sendBtn;
 	TextView viewLatLon;
-	
+	InputMethodManager imm;
 	private View myView;
 	
 	
@@ -38,7 +40,9 @@ public class WritePostFragment extends ContentFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		
 		myView = inflater.inflate(R.layout.writepostinner, container, false);
-
+		myView.requestFocus();
+	    imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);     
+	    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
         viewLatLon = (TextView) myView.findViewById(R.id.viewLatLon);
         
         sendBtn = (Button) myView.findViewById(R.id.btn_upload);
@@ -173,7 +177,7 @@ public class WritePostFragment extends ContentFragment {
 			public void run() {
 				pd.dismiss();
 				//getActivity().finish();
-				((FragmentParentListener)getActivity()).OnFragmentMessage("Finished", null, null);
+				((FragmentParentListener)getActivity()).OnFragmentMessage("Finished", null, null);				
 			}
 		});
 	}

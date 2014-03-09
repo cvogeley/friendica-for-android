@@ -162,7 +162,8 @@ public class FileUploadService extends IntentService {
 		fileToUpload = (Uri) intentPara.getParcelable(Intent.EXTRA_STREAM);
 		descText = intentPara.getString(EXTRA_DESCTEXT);
 		subject = intentPara.getString(Intent.EXTRA_SUBJECT);
-		
+		Log.i("Andfrnd/UploadFile","status:"+descText);
+		Log.i("Andfrnd/UploadFile","subject:"+subject);
 		if (targetFilename == null || targetFilename.equals("")) targetFilename = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date()) + ".txt";
 		
 		String fileSpec = Max.getRealPathFromURI(FileUploadService.this, fileToUpload);
@@ -188,8 +189,9 @@ public class FileUploadService extends IntentService {
 				try {
 					Log.i("Andfrnd/UploadFile","JSON RESULT: "+uploader.getHttpCode());
 					result = (JSONObject) uploader.getJsonResult();
-					
+					//Log.i("Andfrnd/UploadFile", "json result"+result);
 					String postedText = result.getString("text");
+					//Log.i("Andfrnd/UploadFile", "posted text"+postedText);
 					showSuccessMsg(FileUploadService.this);
 					
 				} catch (Exception e) {

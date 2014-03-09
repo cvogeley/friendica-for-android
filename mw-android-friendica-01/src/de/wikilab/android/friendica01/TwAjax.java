@@ -367,12 +367,15 @@ public class TwAjax extends Thread {
         try {
 			if (myPostFiles == null) {
 				runDefault();
+				Log.i("run:","default");
 			} else {
 				runFileUpload();
+				Log.i("run:","file upload");
 			}
         } catch (Exception e) {
         	success=false;
         	myError = e;
+        	Log.i("Error run:",e.getMessage());
         }
         if (myHandler != null && myCallback != null) myHandler.post(myCallback);
 	}

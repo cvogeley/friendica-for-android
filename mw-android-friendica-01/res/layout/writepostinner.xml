@@ -97,9 +97,17 @@
                 android:text="@string/viewLatLon" />
             
         </LinearLayout>
-            <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/btn_upload" android:padding="5dp" android:paddingTop="4dp"
-						 android:drawableLeft="@android:drawable/ic_menu_edit" android:text="@string/mm_updatemystatus"
-            android:layout_alignParentRight="true" android:paddingLeft="40dp" />
+
+            <Button
+                android:id="@+id/btn_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@android:drawable/ic_menu_edit"
+                android:padding="5dp"
+                android:paddingLeft="40dp"
+                android:paddingTop="4dp"
+                android:text="@string/mm_updatemystatus" />
 						
         <!--                          android:background="@drawable/header_gradient" 
 		<RelativeLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/footer_gradient">
@@ -119,6 +127,8 @@
         android:layout_alignParentTop="true"
         android:gravity="top"
 		android:inputType="textCapSentences"
-        android:text="" />
+        android:text=""/>
+
+    
 
 </RelativeLayout>
