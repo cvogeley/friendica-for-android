@@ -203,6 +203,9 @@ public class HomeActivity extends FragmentActivity implements FragmentParentList
 		if (message.equals("Navigate Conversation")) {
 			navigateConversation((String) arg1);
 		}
+		/*if (message.equals("Finished")) {
+			this.finishFromChild(getParent());
+		}*/
 	}
 
 

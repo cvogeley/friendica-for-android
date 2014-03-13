@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -176,8 +177,10 @@ public class WritePostFragment extends ContentFragment {
 			@Override
 			public void run() {
 				pd.dismiss();
-				//getActivity().finish();
-				((FragmentParentListener)getActivity()).OnFragmentMessage("Finished", null, null);				
+				imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+				getActivity().getSupportFragmentManager().popBackStack();
+				((FragmentParentListener)getActivity()).OnFragmentMessage("Set Header Text", "Timeline", null);
+				
 			}
 		});
 	}
@@ -187,5 +190,7 @@ public class WritePostFragment extends ContentFragment {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 	
 }

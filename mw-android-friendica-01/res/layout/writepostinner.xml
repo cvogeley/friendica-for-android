@@ -126,7 +126,6 @@
         android:layout_above="@id/bottom_control_bar"
         android:layout_alignParentTop="true"
         android:gravity="top"
-		android:inputType="textCapSentences"
         android:text=""/>
 
     
