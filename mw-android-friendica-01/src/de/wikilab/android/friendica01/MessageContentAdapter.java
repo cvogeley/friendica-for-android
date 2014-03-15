@@ -134,6 +134,7 @@ public class MessageContentAdapter extends ArrayAdapter<JSONObject> {
 			//Max.setHtmlWithImages(H.htmlContent, post.getString("statusnet_html"));
 			String filtered_html = post.getString("text");
 			if (filtered_html.length()>500) filtered_html=filtered_html.substring(0,500)+"<br><br><b>click to read more...</b>";
+			//filtered_html = filtered_html.replace("\n\r", "<br>");
 			filtered_html = filtered_html.replace("\n", "<br>");
 			
 			Spanned spanned = Html.fromHtml(filtered_html);

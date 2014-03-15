@@ -72,7 +72,6 @@ public class PostListAdapter extends ArrayAdapter<JSONObject> {
 	public int getItemViewType(int position) {
 		try {
 			JSONObject post = (JSONObject) getItem(position);
-			
 			if (post.getString("verb").equals("http://activitystrea.ms/schema/1.0/like")) {
 				post.put("MW_TYPE", 3);
 			} else if (post.has("in_reply_to_status_id") && post.getString("in_reply_to_status_id").equals("0") == false) {
@@ -237,7 +236,8 @@ public class PostListAdapter extends ArrayAdapter<JSONObject> {
 
 			//Max.setHtmlWithImages(H.htmlContent, post.getString("statusnet_html"));
 			String filtered_html = post.getString("statusnet_html");
-			filtered_html = filtered_html.replaceAll("(<br[^>]*>|</?div[^>]*>|</?p>)", "  ");
+			//Log.i("Text",filtered_html);
+			//filtered_html = filtered_html.replaceAll("(<br[^>]*>|</?div[^>]*>|</?p>)", "  ");
 			//filtered_html = filtered_html.replaceAll("<img[^>]+src=[\"']([^>\"']+)[\"'][^>]*>", "<a href='$1'>Bild: $1</a>");
 			Spanned spanned = Html.fromHtml(filtered_html);
 			Spannable htmlSpannable;
