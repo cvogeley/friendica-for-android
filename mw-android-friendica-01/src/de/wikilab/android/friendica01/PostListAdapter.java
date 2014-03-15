@@ -212,6 +212,7 @@ public class PostListAdapter extends ArrayAdapter<JSONObject> {
 			try {
 				String appendix = "";
 				if (H.Type ==  2 && !isPostDetails && post.getString("in_reply_to_screen_name") != "null")  appendix = " replied to " + post.getString("in_reply_to_screen_name") + ":";
+				Log.i("in_reply",post.getString("in_reply_to_screen_name"));
 				H.userName.setText(post.getJSONObject("user").getString("name") + appendix);
 			} catch (Exception e) {
 				H.userName.setText("Invalid Dataset!");
