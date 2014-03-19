@@ -266,13 +266,15 @@ public class Max {
 		edtUser.setText(userName);
 
 		final EditText edtPassword = (EditText)myView.findViewById(R.id.edtPassword);
-		
+		TextView t2 = (TextView) myView.findViewById(R.id.register_link);
+		    t2.setMovementMethod(LinkMovementMethod.getInstance());
 		((TextView)myView.findViewById(R.id.proxy_settings)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				ctx.startActivity(new Intent(ctx, PreferencesActivity.class));
 			}
 		});
+
 		
 		((Button)myView.findViewById(R.id.button1)).setOnClickListener(new View.OnClickListener() {
 			@Override
